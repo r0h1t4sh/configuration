@@ -1,0 +1,83 @@
+"Some basics
+set nocompatible " we want new vim features whenever they are available
+set autoindent
+set history=50   " remember last 50 commands
+set ruler        " show cursor position in the bottom line
+set nu
+set textwidth=80
+
+set expandtab
+set textwidth=79
+set tabstop=8
+set softtabstop=4
+set shiftwidth=4
+set autoindent
+:syntax on
+
+set autowrite "write before make or execute
+set wildmenu "so me all options on tab in commandline
+set clipboard=unnamed "y and d puts into system clipboard
+
+"Colorscheme
+syntax enable
+set background=dark
+"let g:solarized_termcolors=256
+colorscheme solarized
+
+"language specific
+"python
+function! PYSET()
+      set tw=0
+      set nowrap
+      "set execute command
+      map <C-S-e>  :!clear<CR>:! python % <CR>
+endfunction
+
+"c++
+function! CPPSET()
+        set makeprg=set\ -e;\ if\ \[\ -f\ \"Makefile\"\ \];then\ make\ $*;else\ if\ \[\ -f\ \"makefile\"\ \];then\ make\ $*;else\ g++\ -O2\ -g\ -Wall\ -W\ -o%.bin\ %;fi;fi;\ ./%.bin
+        set cindent
+        set tw=0
+        set nowrap
+        "set execute command
+        map <C-S-e>  :!clear<CR>:make <CR>
+endfunction
+
+"Vim
+function! VIMSET()
+      set tw=0
+      set nowrap
+      set comments+=b:\"
+endfunction
+
+autocmd FileType python call PYSET()
+autocmd FileType cpp call CPPSET()
+autocmd FileType vim call VIMSET()
+
+"Fold all the lines on open
+set fdm=marker
+set commentstring=\ \"\ %s
+
+"plugins
+filetype plugin indent on
+if exists('+colorcolumn')
+  set colorcolumn=80
+else
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
+
+" tab navigation like
+nnoremap <C-S-tab> :tabprevious<CR>
+nnoremap <C-n>   :tabnext<CR>
+nnoremap <C-t>     :tabnew<CR>
+nnoremap <C-f> :GundoToggle<CR>
+inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+inoremap <C-n>   <Esc>:tabnext<CR>i
+inoremap <C-t>     <Esc>:tabnew<CR>
+
+
+"folding settings
+set foldmethod=indent   "fold based on indent
+set foldnestmax=10      "deepest fold is 10 levels
+set nofoldenable        "dont fold by default
+set foldlevel=1         "this is just what i use
