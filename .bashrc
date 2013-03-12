@@ -113,33 +113,29 @@ fi
 # rohitash personal
 
 ############TERMINAL TWEAKS##############
-export PS1="\u\$ "
-#export no_proxy=localhost,127.0.0.1/8,singularity
+export PS1="\`if [ \$? != 0 ]; then echo \[\e[33m\]---=== \[\e[31m\]\[\e[33m\]===---;fi\`\n\[\e[0;37m\][\[\e[1;31m\]\@\[\e[0;37m\]]\[\e[0;32m\]\u@\h\[\e[0;37m\] => " #[\[\e[1;34m\]\[\e[0;37m\]] \[\e[0;32m\]\$\[\e[0m\] "
+export no_proxy=localhost,127.0.0.1/8,singularity
 #export http_proxy='http://192.168.36.1:8080'
 
 
 #########CUSTOM SCRIPT DIR##############
 if [ -d $HOME/rohitash/scripts ]; then
-   PATH=$PATH:$HOME/rohitash/scripts 
+   PATH=$PATH:$HOME/rohitash/scripts
 fi
 
 ############ALIAS@@######################
 alias list='ls -la'
 alias p='pwd'
 alias drush='drush -v'
-alias zeus='cd ~/game_engines/zeus/trunk/zeus/'
-alias zeus-old='cd ~/game_engines/zeus/0.17/rummy/'
-alias zeus-old='cd ~/game_engines/zeus/0.17/rummy/'
-alias rummy='cd ~/game_engines/rummy/trunk/rummy/indian/'
-alias to-delete='cd ~/temp/to_delete'
 alias todo='cd ~/todo'
 alias ack='ack-grep'
-alias kill-zeus='kill -9 `ps aux | grep zeus | cut -d" " -f3 `'
 alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
-alias nucleus='cd ~/python_server/trunk/nucleus/'
-
+#alias jslint='jslint --indent --'
 
 ##############################################33
-export DEBEMAIL="rohtiash@innopark.in"
+export DEBEMAIL="rohitash@innopark.in"
 export DEBFULLNAME="Rohitash Kumar" 
 
+
+bind '"\e[A"':history-search-backward
+bind '"\e[B"':history-search-forward

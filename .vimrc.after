@@ -11,12 +11,12 @@ set textwidth=79
 set tabstop=8
 set softtabstop=4
 set shiftwidth=4
-set autoindent
+set smartindent
 :syntax on
 
 set autowrite "write before make or execute
 set wildmenu "so me all options on tab in commandline
-set clipboard=unnamed "y and d puts into system clipboard
+set clipboard+=unnamed "y and d puts into system clipboard
 
 "Colorscheme
 syntax enable
@@ -70,7 +70,6 @@ endif
 nnoremap <C-S-tab> :tabprevious<CR>
 nnoremap <C-n>   :tabnext<CR>
 nnoremap <C-t>     :tabnew<CR>
-nnoremap <C-f> :GundoToggle<CR>
 inoremap <C-S-tab> <Esc>:tabprevious<CR>i
 inoremap <C-n>   <Esc>:tabnext<CR>i
 inoremap <C-t>     <Esc>:tabnew<CR>
@@ -81,3 +80,7 @@ set foldmethod=indent   "fold based on indent
 set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
 set foldlevel=1         "this is just what i use
+
+
+"I am poor at spellings
+set spell
